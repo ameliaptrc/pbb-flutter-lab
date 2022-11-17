@@ -46,7 +46,14 @@ Pengimplementasian checklist adalah:
 - ```Navigator.push```: menambahkan routing lain dari atas tumpukan screen dimana kita dapat kembali ke layar sebelumnya (dapat melakukan back)
 
 ## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
-
+- ```Column```: mengatur tata letak widget secara vertikal
+- ```Form```: container untuk menampung form field widget
+- ```TextFormField```: menerima input form dari user
+- ```Text```: display text di layar
+- ```Drawer```: navigation link pada aplikasi
+- ```Scaffold```: implement struktur layout scr visual
+- ```Align```: posisikan child widget
+- ```ListTitle```: row dgn fixed height
 ## jenis-jenis event yang ada pada Flutter.
 - onHover
 - onTap
