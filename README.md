@@ -1,3 +1,4 @@
+# Tugas 7
 ## 1.Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget dan jelaskan perbedaan dari keduanya.
 Stateless dan Stateful widget merupakan dua tipe widget di flutter. Perbedaan antara keduanya adalah:
 Stateless Widget: ‘stateless’ yang berarti widget yang digunakan dimuat secara statis dimana seluruh konfigurasi sudah diinisiasi dari awal. Berbeda dengan stateful widget, widget ini tidak dapat diubah dan tidak akan diubah, seperti button,item, box container, dan lain - lain.
@@ -38,3 +39,38 @@ Pengimplementasian checklist adalah:
 - membuat if - else yang dapat mengidentifikasi apakah angka tersebut ganjil atau genap di dalam childrenwidget
 - mengecek apakah sudah benar dan menjalankan proyek flutter dengan ```flutter run``` dalam cmd.
 - melakukan push pada github.
+
+# Tugas 8
+## Jelaskan perbedaan ```Navigator.push``` dan ```Navigator.pushReplacement```.
+- ```Navigator.pushReplacement```: menggantikan layar yang sedang ditampilkan ke layar lain
+- ```Navigator.push```: menambahkan routing lain dari atas tumpukan screen dimana kita dapat kembali ke layar sebelumnya (dapat melakukan back)
+
+## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+- ```Column```: mengatur tata letak widget secara vertikal
+- ```Form```: container untuk menampung form field widget
+- ```TextFormField```: menerima input form dari user
+- ```Text```: display text di layar
+- ```Drawer```: navigation link pada aplikasi
+- ```Scaffold```: implement struktur layout scr visual
+- ```Align```: posisikan child widget
+- ```ListTitle```: row dgn fixed height
+## jenis-jenis event yang ada pada Flutter.
+- onHover
+- onTap
+- onPressed
+- onChanged
+
+## Jelaskan bagaimana cara kerja Navigator dalam "mengganti" halaman dari aplikasi Flutter.
+Navigator menggunakan stack yang didalamnya terdapat route (isi stack tersebut adalah halaman yang akan diakses). Halaman - halaman yang ada di navigator bisa back ke halaman selanjutnya dengan pop() dan menambah halaman dengan push(). Sesuai dengan kaidah stack, maka elemen yang paling atas yang akan ditampilkan untuk user.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+1. Membuat file ```drawer.dart``` untuk penghubung 3 halaman.
+2. Membuat file ```form.dart``` untuk halaman form pada tambah budget.
+3. Membuat file ```data.dart``` untuk menampilkan data databudget.
+4. Import file di counter_7 di setiap file dart yang sudah dibuat.
+
+# Tugas 9
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+## Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
