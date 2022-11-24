@@ -1,10 +1,12 @@
 import 'package:counter_7/main.dart';
+import 'package:counter_7/page/mywatchlist.dart';
 import 'package:flutter/material.dart';
-import 'package:counter_7/form.dart';
-import 'package:counter_7/data.dart';
+import 'package:counter_7/page/data.dart';
+import 'package:counter_7/page/form.dart';
 
-class PageDrawer extends StatelessWidget {
-  const PageDrawer({super.key});
+
+class MyPageDrawer extends StatelessWidget {
+  const MyPageDrawer({super.key, required Column child});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class PageDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const FormPage()),
+                MaterialPageRoute(builder: (context) => const MyFormPage()),
               );
             },
           ),
@@ -37,7 +39,17 @@ class PageDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const DataPage()),
+                MaterialPageRoute(builder: (context) => const MyDataPage()),
+              );
+            },
+          ),
+          ListTile(
+            // access my watchlist
+            title: const Text('My Watch List'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const MyWatchListPage()),
               );
             },
           ),

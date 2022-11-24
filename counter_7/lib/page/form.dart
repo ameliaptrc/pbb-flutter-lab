@@ -1,12 +1,13 @@
-import 'package:counter_7/data.dart';
+import 'package:counter_7/page/data.dart';
+import 'package:counter_7/page/mywatchlist.dart';
 import 'package:flutter/material.dart';
-import 'package:counter_7/drawer.dart';
+import 'package:counter_7/data/drawer.dart';
 
-class FormPage extends StatefulWidget {
-    const FormPage({super.key});
+class MyFormPage extends StatefulWidget {
+    const MyFormPage({super.key});
 
     @override
-    State<FormPage> createState() => _FormPageState();
+    State<MyFormPage> createState() => _MyFormPageState();
 }
 
 class BudgetData {
@@ -22,7 +23,7 @@ class BudgetData {
 
 List<BudgetData> budgetList = [];
 
-class _FormPageState extends State<FormPage> {
+class _MyFormPageState extends State<MyFormPage> {
   final _formKey = GlobalKey<FormState>();
   String? _judul;
   int? nominal;
@@ -34,9 +35,54 @@ class _FormPageState extends State<FormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Tambah Budget'),
+          title: const Text('Form Budget'),
       ),
-      drawer: const PageDrawer(),
+      drawer: MyPageDrawer(
+          child: Column(
+            children: [
+              // Menambahkan clickable menu
+              ListTile(
+                title: const Text('Counter_7'),
+                onTap: () {
+                  // Route menu ke halaman utama
+                  Navigator.pop(
+                    context,
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Tambah Budget'),
+                onTap: () {
+                  // Route menu ke halaman form
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyFormPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Data Budget'),
+                onTap: () {
+                  // Route menu ke halaman form
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyDataPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('My Watch List'),
+                onTap: () {
+                  // Route menu ke halaman form
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyWatchListPage()),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -200,7 +246,7 @@ class _FormPageState extends State<FormPage> {
     budgetList.add(data);
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const DataPage()),
+      MaterialPageRoute(builder: (context) => const MyDataPage()),
     );
   }
 }

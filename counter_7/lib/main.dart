@@ -1,6 +1,10 @@
+import 'package:counter_7/page/mywatchlist.dart';
+import 'package:counter_7/page/mywatchlist_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:counter_7/drawer.dart';
-import 'package:counter_7/form.dart';
+import 'package:counter_7/data/drawer.dart';
+import 'package:counter_7/page/form.dart';
+import 'package:counter_7/page/data.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -65,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+
   // decrement counter
   void _decrementCounter() {
     setState(() {
@@ -77,14 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
   // visibility access
   void _visibilityAccess() {
     setState(() {
-    if (_counter == 0) {
-      isVisible;
-    }
-    else {
-      isVisible = true;
-    }
+      if (_counter == 0) {
+        isVisible;
+      } else {
+        isVisible = true;
+      }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -94,77 +99,121 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      drawer: const PageDrawer(),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // if else for define they're ood or even
-            // GANJIL
-            if (_counter % 2 == 1) 
-              const Text('GANJIL',
-                          style: TextStyle(color: Colors.blue),
-              )
-            else
-              const Text('GENAP',
-                        style: TextStyle(color: Colors.red)
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
         ),
-      ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(left: 30),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Visibility(
-              visible: isVisible,
-              child: FloatingActionButton(
+        drawer: MyPageDrawer(
+          child: Column(
+            children: [
+              // Menambahkan clickable menu
+              ListTile(
+                title: const Text('Counter_7'),
+                onTap: () {
+                  // Route menu ke halaman utama
+                  Navigator.pop(
+                    context,
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Tambah Budget'),
+                onTap: () {
+                  // Route menu ke halaman form
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyFormPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Data Budget'),
+                onTap: () {
+                  // Route menu ke halaman form
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyDataPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('My Watch List'),
+                onTap: () {
+                  // Route menu ke halaman form
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyWatchListPage()),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+        body: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            // Column is also a layout widget. It takes a list of children and
+            // arranges them vertically. By default, it sizes itself to fit its
+            // children horizontally, and tries to be as tall as its parent.
+            //
+            // Invoke "debug painting" (press "p" in the console, choose the
+            // "Toggle Debug Paint" action from the Flutter Inspector in Android
+            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+            // to see the wireframe for each widget.
+            //
+            // Column has various properties to control how it sizes itself and
+            // how it positions its children. Here we use mainAxisAlignment to
+            // center the children vertically; the main axis here is the vertical
+            // axis because Columns are vertical (the cross axis would be
+            // horizontal).
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // if else for define they're ood or even
+              // GANJIL
+              if (_counter % 2 == 1)
+                const Text(
+                  'GANJIL',
+                  style: TextStyle(color: Colors.blue),
+                )
+              else
+                const Text('GENAP', style: TextStyle(color: Colors.red)),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(left: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Visibility(
+                visible: isVisible,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    _decrementCounter();
+                    _visibilityAccess();
+                  },
+                  tooltip: 'Decrement',
+                  child: const Icon(Icons.remove),
+                ),
+              ),
+              FloatingActionButton(
                 onPressed: () {
-                  _decrementCounter();
+                  _incrementCounter();
                   _visibilityAccess();
                 },
-                tooltip:'Decrement',
-                child: const Icon(Icons.remove),
+                tooltip: 'Increment',
+                child: const Icon(Icons.add),
               ),
-            ),
-            FloatingActionButton(
-              onPressed: () {
-                _incrementCounter();
-                _visibilityAccess();
-              },
-              tooltip:'Increment',
-              child: const Icon(Icons.add),
-            ),
-          ],
-        ),
-      ) // This trailing comma makes auto-formatting nicer for build methods.
-    );
+            ],
+          ),
+        ) // This trailing comma makes auto-formatting nicer for build methods.
+        );
   }
 }
 
