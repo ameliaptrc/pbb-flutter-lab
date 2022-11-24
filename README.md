@@ -68,3 +68,9 @@ Navigator menggunakan stack yang didalamnya terdapat route (isi stack tersebut a
 2. Membuat file ```form.dart``` untuk halaman form pada tambah budget.
 3. Membuat file ```data.dart``` untuk menampilkan data databudget.
 4. Import file di counter_7 di setiap file dart yang sudah dibuat.
+
+# Tugas 9
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+## Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
